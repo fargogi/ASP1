@@ -31,6 +31,13 @@ namespace MyWebStore.Controllers
             }
         };
 
+        public IActionResult Details(int id)
+        {
+            var employee = (from e in _employees
+                            where e.ID == id
+                            select e).ToArray()[0];
+            return View(employee);
+        }
 
         public IActionResult Index()
         {

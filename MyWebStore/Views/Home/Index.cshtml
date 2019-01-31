@@ -7,17 +7,18 @@
 	<title>Index</title>
 </head>
 <body>
-	<table>
+	@{
+		ViewData["Title"] = "Список сотрудников";
+	}
+
+	<hr />
+	<table class="table table-bordered">
 		@foreach (var item in Model)
 		{
 			<tr>
-
-				<td>@item.ID</td>
 				<td>@item.FirstName</td>
-				<td>@item.Patronymic</td>
-				<td>@item.SurName</td>
-				<td>@item.Age</td>
-
+				<td>@item.SurName</td>				
+				<td>@Html.ActionLink("Детали", "Details", new { id = item.ID })</td>
 			</tr>
 		}
 	</table>
