@@ -31,6 +31,11 @@ namespace MyWebStore.Controllers
             }
         };
 
+        /// <summary>
+        /// Метод, возвращающий сотрудника по ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IActionResult Details(int id)
         {
             var employee = (from e in _employees
