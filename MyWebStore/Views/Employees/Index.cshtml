@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MyWebStore.Models.EmployeeView>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" charset="utf-8" />
+	<title>Index</title>
+</head>
+<body>
+	@{
+		ViewData["Title"] = "Список сотрудников";
+	}
+
+	<hr />
+	<table class="table table-bordered">
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.FirstName</td>
+				<td>@item.SurName</td>				
+				<td>@Html.ActionLink("Детали", "Details", new { id = item.ID })</td>
+			</tr>
+		}
+	</table>
+</body>
+</html>

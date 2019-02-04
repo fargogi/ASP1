@@ -1,26 +1,27 @@
-﻿@model IEnumerable<MyWebStore.Models.EmployeeView>
+﻿@{
+	ViewData["Title"] = "Магазин";
+}
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta name="viewport" content="width=device-width" charset="utf-8" />
-	<title>Index</title>
-</head>
-<body>
-	@{
-		ViewData["Title"] = "Список сотрудников";
-	}
+@await Html.PartialAsync("Partial/_Slider")
 
-	<hr />
-	<table class="table table-bordered">
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>@item.FirstName</td>
-				<td>@item.SurName</td>				
-				<td>@Html.ActionLink("Детали", "Details", new { id = item.ID })</td>
-			</tr>
-		}
-	</table>
-</body>
-</html>
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+
+				@Html.PartialAsync("Partial/_LeftSideBar")
+
+			</div>
+
+			<div class="col-sm-9 padding-right">
+
+				@Html.PartialAsync("Partial/_FeaturedItems")
+
+				@Html.PartialAsync("Partial/_CategoryTab")
+
+				@Html.PartialAsync("Partial/_RecomendedItems")
+
+			</div>
+		</div>
+	</div>
+</section>
