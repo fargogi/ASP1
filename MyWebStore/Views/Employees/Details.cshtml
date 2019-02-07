@@ -1,18 +1,16 @@
-﻿@model MyWebStore.Models.EmployeeView
+﻿@model MyWebStore.Models.EmployeeViewModel;
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta name="viewport" content="width=device-width" charset="utf-8" />
-	<title>Index</title>
-</head>
-<body>
+<div class="container">
+	<div class="row">
+		<section>
 
-	<p>@Model.SurName</p>
-	<p>@Model.FirstName</p>
-	<p>@Model.Patronymic</p>
-	<p>@Model.Age лет</p>
-	<p>@Html.ActionLink("Назад", "Index")</p>
+			<p>@Model.SurName</p>
+			<p>@Model.FirstName</p>
+			<p>@Model.Patronymic</p>
+			<p>@Model.Age лет</p>
+			<p>@Html.ActionLink("Назад", "Index")</p>
 
-</body>
-</html>
+		</section>
+	</div>
+</div>
+

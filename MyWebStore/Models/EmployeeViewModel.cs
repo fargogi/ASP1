@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyWebStore.Models
 {
-    public class EmployeeView
+    public class EmployeeViewModel
     {
         public int ID { get; set; }
         public string FirstName { get; set; }

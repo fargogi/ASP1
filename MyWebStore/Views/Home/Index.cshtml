@@ -9,17 +9,17 @@
 		<div class="row">
 			<div class="col-sm-3">
 
-				@Html.PartialAsync("Partial/_LeftSideBar")
+				@await Html.PartialAsync("Partial/_LeftSideBar")
 
 			</div>
 
 			<div class="col-sm-9 padding-right">
 
-				@Html.PartialAsync("Partial/_FeaturedItems")
+				@await Html.PartialAsync("Partial/_FeaturedItems")
 
-				@Html.PartialAsync("Partial/_CategoryTab")
+				@await Html.PartialAsync("Partial/_CategoryTab")
 
-				@Html.PartialAsync("Partial/_RecomendedItems")
+				@await Html.PartialAsync("Partial/_RecomendedItems")
 
 			</div>
 		</div>
