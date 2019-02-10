@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyWebStore.Models
 {
     public class EmployeeViewModel
     {
+        [HiddenInput(DisplayValue = false)]
         public int ID { get; set; }
 
         [Required(AllowEmptyStrings =false,ErrorMessage ="Имя должно быть обязательно.")]
@@ -27,5 +29,9 @@ namespace MyWebStore.Models
         [Required(ErrorMessage ="Не указан возраст.")]
         [Range(minimum:18, maximum:150,ErrorMessage = "Возраст должен быть в диапазоне 18 - 150 лет")]
         public int Age { get; set; }
+
+        [Display(Name = "Пароль")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }
