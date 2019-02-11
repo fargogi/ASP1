@@ -11,8 +11,6 @@ namespace MyWebStore.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index() => View();
-        public IActionResult Shop() => View();
-        public IActionResult ProductDetails() => View();
         public IActionResult Login() => View();
         public IActionResult ContactUs() => View();
         public IActionResult CheckOut() => View();
