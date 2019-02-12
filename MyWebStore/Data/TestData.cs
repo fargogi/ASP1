@@ -16,7 +16,7 @@ namespace MyWebStore.Data
             new Brand(){Id=4,Name="Ronhill",Order=3},
             new Brand(){Id=5,Name="Oddmolly",Order=4},
             new Brand(){Id=6,Name="Boudestijn",Order=5},
-            new Brand(){Id=7,Name="Röschcreativeculture",Order=6}
+            new Brand(){Id=7,Name="Rösch creative culture",Order=6}
             };
 
         public static List<Section> Sections { get; } = new List<Section>
