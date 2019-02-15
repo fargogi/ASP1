@@ -19,7 +19,7 @@ namespace MyWebStore.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var sections =  await Task.Run(()=>GetSections());
+            var sections = GetSections();
             return View(sections);
         }
 

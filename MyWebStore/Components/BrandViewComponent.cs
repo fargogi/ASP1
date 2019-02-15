@@ -19,7 +19,7 @@ namespace MyWebStore.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var brands = await Task.Run(() => GetBrands());
+            var brands = GetBrands();
             return View(brands);
         }
 
@@ -30,7 +30,8 @@ namespace MyWebStore.Components
             {
                 Id = brand.Id,
                 Name = brand.Name,
-                Order = brand.Order
+                Order = brand.Order,
+                ProductsCount = 0
             }).ToList();
 
             brand_views.Sort((a, b) => Comparer<int>.Default.Compare(a.Order, b.Order));

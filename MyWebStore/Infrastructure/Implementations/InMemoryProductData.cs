@@ -12,6 +12,24 @@ namespace MyWebStore.Infrastructure.Implementations
     {
         public IEnumerable<Brand> GetBrands() => TestData.Brands;
 
+
         public IEnumerable<Section> GetSections() => TestData.Sections;
+
+        public IEnumerable<Product> GetProducts(ProductFilter filter)
+        {
+            var products = TestData.Products;
+            if (filter.SectionId.HasValue)
+            {
+                products = products.Where(p => p.SectionId.Equals(filter.SectionId)).ToList();
+            }
+            if (filter.BrandId.HasValue)
+            {
+                products = products.Where(p => p.BrandId.HasValue && 
+                p.BrandId.Value.Equals(filter.BrandId.Value)).ToList();
+            }
+
+            return products;
+        }
+
     }
 }
