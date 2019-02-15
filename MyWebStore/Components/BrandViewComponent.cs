@@ -31,7 +31,7 @@ namespace MyWebStore.Components
                 Id = brand.Id,
                 Name = brand.Name,
                 Order = brand.Order,
-                ProductsCount = 0
+                ProductsCount = _productData.GetProductsBrandCount(brand.Id)
             }).ToList();
 
             brand_views.Sort((a, b) => Comparer<int>.Default.Compare(a.Order, b.Order));

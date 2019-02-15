@@ -31,5 +31,9 @@ namespace MyWebStore.Infrastructure.Implementations
             return products;
         }
 
+        public int GetProductsBrandCount(int brandId)
+        {
+            return TestData.Products.Count(p => p.BrandId == brandId);
+        }
     }
 }
