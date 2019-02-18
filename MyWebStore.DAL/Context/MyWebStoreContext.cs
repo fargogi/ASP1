@@ -8,7 +8,7 @@ namespace MyWebStore.DALNew.Context
 {
     public class MyWebStoreContext : DbContext
     {
-        public MyWebStoreContext(DbContextOptions options) : base(options) { }
+        public MyWebStoreContext(DbContextOptions<MyWebStoreContext> options) : base(options) { }
 
         DbSet<Section> Sections { get; set; }
 

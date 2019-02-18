@@ -24,6 +24,7 @@ namespace MyWebStore.DomainEntities.Entities
         public string ImageUrl { get; set; }
 
         /// <summary>Цена товара</summary>
+        [Column(TypeName="decimal(18,2)")]
         public decimal Price { get; set; }
 
         [ForeignKey("SectionId")]
