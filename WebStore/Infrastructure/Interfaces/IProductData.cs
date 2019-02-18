@@ -25,5 +25,7 @@ namespace MyWebStore.Infrastructure.Interfaces
         /// <param name="brandId">Идентификатор бренда</param>
         /// <returns>Возвращает количество товаров</returns>
         int GetProductsBrandCount(int brandId);
+
+        Product GetProductById(int id);
     }
 }

@@ -35,5 +35,10 @@ namespace MyWebStore.Infrastructure.Implementations
         {
             return TestData.Products.Count(p => p.BrandId == brandId);
         }
+
+        public Product GetProductById(int id)
+        {
+            return TestData.Products.FirstOrDefault(p => p.Id == id);
+        }
     }
 }
