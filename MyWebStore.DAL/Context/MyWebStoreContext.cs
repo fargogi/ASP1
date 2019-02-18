@@ -10,10 +10,10 @@ namespace MyWebStore.DALNew.Context
     {
         public MyWebStoreContext(DbContextOptions<MyWebStoreContext> options) : base(options) { }
 
-        DbSet<Section> Sections { get; set; }
+        public DbSet<Section> Sections { get; set; }
 
-        DbSet<Brand> Brands { get; set; }
+        public DbSet<Brand> Brands { get; set; }
 
-        DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
