@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyWebStore.DALNew.Context;
+using MyWebStore.DomainEntities.Entities;
 using MyWebStore.Infrastructure.Implementations;
 using MyWebStore.Infrastructure.Interfaces;
+using System;
 
 namespace MyWebStore
 {
@@ -35,6 +38,29 @@ namespace MyWebStore
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData > ();
             //services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddScoped<IProductData, SqlProductData>();
+
+            services.AddIdentity<User, IdentityRole>(opt=>
+            {
+                opt.Password.RequiredLength = 6;
+                opt.Password.RequireDigit = true;
+
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                opt.Lockout.MaxFailedAccessAttempts = 10;
+                opt.Lockout.AllowedForNewUsers = true;
+            });
+
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.Cookie.HttpOnly = true;
+                opt.Cookie.Expiration = TimeSpan.FromDays(150);
+
+                opt.LoginPath = "/Account/Login";
+                opt.LogoutPath = "/Account/Logout";
+                opt.AccessDeniedPath = "/Account/AccessDenied";
+
+                opt.SlidingExpiration = true;
+            });
+
             services.AddDbContext<MyWebStoreContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
@@ -49,6 +75,8 @@ namespace MyWebStore
 
             // Поддержка статических файлов
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             //Обработка запросов в mvc-формате 
             app.UseMvc(routes =>
