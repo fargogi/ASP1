@@ -20,8 +20,32 @@ namespace MyWebStore.Controllers
             _signInManager = signInManager;
         }
 
+        [HttpGet]
+        public IActionResult Login() => View(new LoginViewModel());
 
-        public IActionResult Login() => View();
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if(!ModelState.IsValid)
+            return View(model);
+
+            var login_result = await _signInManager.PasswordSignInAsync(
+                model.UserName, 
+                model.Password, 
+                model.RememberMe, 
+                false);
+
+            if (login_result.Succeeded)
+            {
+                if (Url.IsLocalUrl(model.ReturnUrl))
+                    return Redirect(model.ReturnUrl);
+                return RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("", "Неверный логин или пароль");
+            return View(model);
+
+        }
 
         [HttpGet]
         public IActionResult Register() => View(new RegisterUserViewModel());
@@ -48,6 +72,13 @@ namespace MyWebStore.Controllers
                     ModelState.AddModelError("", error.Description);
 
             return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout(RegisterUserViewModel model)
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -66,7 +66,7 @@
 							<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 							<li><a asp-controller="Home" asp-action="CheckOut"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 							<li><a asp-controller="Home" asp-action="Cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-							<li><a asp-controller="Home" asp-action="Login"><i class="fa fa-lock"></i> Login</a></li>
+							<li>@await  Component.InvokeAsync("LoginLogout")</li>
 						</ul>
 					</div>
 				</div>
@@ -98,7 +98,7 @@
 									<li><a asp-controller="Catalog" asp-action="ProductDetails">Product Details</a></li>
 									<li><a asp-controller="Home" asp-action="CheckOut">Checkout</a></li>
 									<li><a asp-controller="Home" asp-action="Cart">Cart</a></li>
-									<li><a asp-controller="Home" asp-action="Login">Login</a></li>
+									<li><a asp-controller="Account" asp-action="Login">Login</a></li>
 
 								</ul>
 							</li>
