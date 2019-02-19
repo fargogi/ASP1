@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore", "WebStore\WebStore.csproj", "{7313B7CC-7F42-479B-9AA2-3653FA2AE29A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebStore", "WebStore\MyWebStore.csproj", "{7313B7CC-7F42-479B-9AA2-3653FA2AE29A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebStore.DAL", "MyWebStore.DAL\MyWebStore.DAL.csproj", "{00F33B42-7655-423E-BFEF-9238C965B60F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebStore.DAL", "MyWebStore.DAL\MyWebStore.DAL.csproj", "{00F33B42-7655-423E-BFEF-9238C965B60F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebStore.DomainNew", "MyWebStore.DomainNew\MyWebStore.DomainNew.csproj", "{57073B12-F4E7-4079-9997-8385FB5E4CCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebStore.DomainNew", "MyWebStore.DomainNew\MyWebStore.DomainNew.csproj", "{57073B12-F4E7-4079-9997-8385FB5E4CCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -39,7 +39,11 @@ namespace MyWebStore
             //services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddScoped<IProductData, SqlProductData>();
 
-            services.AddIdentity<User, IdentityRole>(opt=>
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<MyWebStoreContext>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(opt=>
             {
                 opt.Password.RequiredLength = 6;
                 opt.Password.RequireDigit = true;

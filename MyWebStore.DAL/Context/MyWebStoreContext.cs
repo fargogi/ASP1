@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MyWebStore.DALNew.Context
 {
-    public class MyWebStoreContext : IdentityDbContext
+    public class MyWebStoreContext : IdentityDbContext<User>
     {
         public MyWebStoreContext(DbContextOptions<MyWebStoreContext> options) : base(options) { }
 
