@@ -37,7 +37,8 @@ namespace MyWebStore.Controllers
                     ImageUrl = p.ImageUrl,
                     Name = p.Name,
                     Order = p.Order,
-                    Price = p.Price
+                    Price = p.Price,
+                    Brand = p.Brand?.Name ?? String.Empty
                 }).OrderBy(p => p.Order).ToList()
             };
 
@@ -45,6 +46,23 @@ namespace MyWebStore.Controllers
         }
 
 
-        public IActionResult ProductDetails() => View();
+        public IActionResult ProductDetails(int id)
+        {
+            var product = _productData.GetProductById(id);
+
+            if (product is null)
+                return NotFound();
+
+
+            return View(new ProductViewModel
+            {
+                Id = product.Id,
+                ImageUrl = product.ImageUrl,
+                Name = product.Name,
+                Order = product.Order,
+                Price = product.Price,
+                Brand = product.Brand?.Name ?? String.Empty
+            });
+        }
     }
 }

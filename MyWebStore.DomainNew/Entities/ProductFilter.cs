@@ -14,5 +14,7 @@ namespace MyWebStore.DomainEntities.Entities
 
         /// <summary>Бренд</summary>
         public int? BrandId { get; set; }
+
+        public IEnumerable<int> Ids { get; set; }
     }
 }

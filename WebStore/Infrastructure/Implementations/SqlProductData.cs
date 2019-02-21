@@ -1,4 +1,5 @@
-﻿using MyWebStore.DALNew.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using MyWebStore.DALNew.Context;
 using MyWebStore.DomainEntities.Entities;
 using MyWebStore.Infrastructure.Interfaces;
 using System;
@@ -22,14 +23,24 @@ namespace MyWebStore.Infrastructure.Implementations
 
         public Product GetProductById(int id)
         {
-            return _db.Products.FirstOrDefault(p => p.Id == id);
+            return _db.Products
+                 .Include(p => p.Brand)
+                .Include(p => p.Section)
+                .FirstOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Product> GetProducts(ProductFilter filter)
         {
-            if(filter is null)
-            return _db.Products.AsEnumerable();
-            IQueryable<Product> result = _db.Products;
+            if (filter is null)
+                return _db.Products
+                        .Include(p => p.Brand)
+                        .Include(p => p.Section)
+                        .AsEnumerable();
+
+            IQueryable<Product> result = _db.Products
+                 .Include(p => p.Brand)
+                 .Include(p => p.Section);
+
             if (filter.BrandId != null)
                 return result.Where(p => p.BrandId == filter.BrandId);
             if (filter.SectionId != null)

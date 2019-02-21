@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyWebStore.Infrastructure.Interfaces;
 using MyWebStore.Models;
 
 namespace MyWebStore.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly IEmployeesData _employeesData;
@@ -32,6 +34,7 @@ namespace MyWebStore.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = MyWebStore.DomainEntities.Entities.User.AdminRole)]
         public IActionResult Edit(int? id)
         {
             if (id is null) return View(new EmployeeViewModel
@@ -49,6 +52,7 @@ namespace MyWebStore.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = MyWebStore.DomainEntities.Entities.User.AdminRole)]
         public IActionResult Edit(EmployeeViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -69,6 +73,7 @@ namespace MyWebStore.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = MyWebStore.DomainEntities.Entities.User.AdminRole)]
         public IActionResult Delete(int? id)
         {
             if (id is null) return BadRequest();
