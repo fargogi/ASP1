@@ -1,9 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using MyWebStore.DALNew.Context;
 using MyWebStore.Data;
+using MyWebStore.DomainEntities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebStore.Data
@@ -47,5 +52,38 @@ namespace WebStore.Data
                 transaction.Commit();
             }
         }
+
+        public static async Task InitializeIdentityAsync(this IServiceProvider services)
+        {
+            var role_manager = services.GetService<RoleManager<IdentityRole>>();
+            if (!await role_manager.RoleExistsAsync(User.UserRole))
+            {
+                await role_manager.CreateAsync(new IdentityRole(User.UserRole));
+            }
+
+            if (!await role_manager.RoleExistsAsync(User.AdminRole))
+            {
+                await role_manager.CreateAsync(new IdentityRole(User.AdminRole));
+            }
+
+            var user_manager = services.GetService<UserManager<User>>();
+
+            var user_store = services.GetService<IUserStore<User>>();
+
+            if (await user_store.FindByNameAsync(User.AdminUser, CancellationToken.None) is null)
+            {
+                var admin = new User
+                {
+                    UserName = User.AdminUser,
+                    Email =$"{User.AdminUser}@server.ru"
+                };
+
+                if ((await user_manager.CreateAsync(admin, "AdminPassword123@")).Succeeded)
+                {
+                    await user_manager.AddToRoleAsync(admin, User.AdminRole);
+                }
+            }
+        }
     }
+
 }
