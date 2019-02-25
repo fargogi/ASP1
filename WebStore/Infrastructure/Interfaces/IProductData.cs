@@ -19,7 +19,7 @@ namespace MyWebStore.Infrastructure.Interfaces
         /// <summary>Товары</summary>
         /// <param name="filter">Фильтрация товаров</param>
         /// <returns>Возвращает список товаров</returns>
-        IEnumerable<Product> GetProducts(ProductFilter filter);
+        IEnumerable<Product> GetProducts(ProductFilter filter = null);
 
         /// <summary>Метод возвращающий количество товаров определенного бренда</summary>
         /// <param name="brandId">Идентификатор бренда</param>

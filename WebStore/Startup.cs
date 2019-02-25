@@ -41,6 +41,8 @@ namespace MyWebStore
 
             services.AddScoped<ICartService, CookieCartService>();
 
+            services.AddScoped<IOrderService, SqlOrderService>();
+
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<MyWebStoreContext>()
                 .AddDefaultTokenProviders();
@@ -88,11 +90,11 @@ namespace MyWebStore
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                                name: "default", 
-                                template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(
                                 name: "areas",
                                 template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                                name: "default", 
+                                template: "{controller=Home}/{action=Index}/{id?}");
 
 
             });

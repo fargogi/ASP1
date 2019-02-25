@@ -59,10 +59,10 @@
     <Content Update="Views\Account\Login.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\Partial\_FeaturedItems.cshtml">
+    <Content Update="Views\Shared\Partial\_FeaturedItems.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\Partial\_Slider.cshtml">
+    <Content Update="Views\Shared\Partial\_Slider.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Shared\Components\Brand\Default.cshtml">
@@ -103,6 +103,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Views\Home\Partial\" />
   </ItemGroup>
 
 </Project>
